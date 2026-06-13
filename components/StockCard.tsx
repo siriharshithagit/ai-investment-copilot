@@ -4,7 +4,7 @@ export default function StockCard({ data }: any) {
   const isPositive = Number(data.change) >= 0;
 
   return (
-    <div className="bg-white p-4 rounded shadow mt-4 text-black">
+    <div className="bg-slate-50 p-4 rounded shadow mt-4 text-black">
       <h2 className="text-xl font-bold">
         {data.symbol}
       </h2>
