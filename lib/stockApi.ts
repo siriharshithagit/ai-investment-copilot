@@ -1,9 +1,18 @@
 export async function getStock(symbol: string) {
-  const res = await fetch(`/api/stock?symbol=${symbol}`);
+  const res = await fetch(
+    `/api/stock?symbol=${encodeURIComponent(symbol)}`
+  );
+
+  const text = await res.text();
+
+  console.log("Stock Status:", res.status);
+  console.log("Stock Response:", text);
 
   if (!res.ok) {
-    throw new Error("Failed to fetch stock data");
+    throw new Error(
+      `Stock API failed (${res.status}): ${text}`
+    );
   }
 
-  return res.json();
+  return JSON.parse(text);
 }
